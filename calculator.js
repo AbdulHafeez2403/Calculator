@@ -6,5 +6,8 @@ app.listen(3000, function() {
 });
 
 app.get("/", function (req, res) {
-    res.send("Hello, World!!!!");
+    // res.send("Hello, World!!!!");
+    // console.log(__dirname);
+    res.sendFile(__dirname+"/index.html");
+    //__dirname will return the path of dir from root
 });
