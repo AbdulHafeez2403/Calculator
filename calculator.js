@@ -20,13 +20,25 @@ app.get("/", function (req, res) {
     //__dirname will return the path of dir from root
 });
 
+app.get("/bmiCalculator", function (req, res) {         //for BMI calc
+   res.sendFile(__dirname+"/bmiCalculator.html"); 
+});
+
 //now we are proceccing the post request
 app.post("/", function (req, res) {
     // console.log(req.body);
     // console.log(req.body.num1);
-    var num1 = Number(req.body.num1);
-    var num2 = Number(req.body.num2);
+    var num1 = Number(req.body.n1);
+    var num2 = Number(req.body.n2);
     var result =num1+num2;
 
-   res.send("The Result is "+result); 
+   res.send("<h1>The Result is "+result+"</h1>"); 
+});
+
+app.post("/bmiCalculator" , function (req, res) {
+    var w = parseFloat(req.body.weight);
+    var h = parseFloat(req.body.height);
+    var bmi = w/(h*h);
+
+    res.send(`<h1>Your BMI is ${bmi}</h1>`);
 });
